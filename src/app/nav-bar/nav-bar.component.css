@@ -1,0 +1,8 @@
+ul {
+  display: flex;
+  background-color: var(--primary-color);
+  justify-content: space-around;
+}
+/* div {
+  position: fixed;
+} */
