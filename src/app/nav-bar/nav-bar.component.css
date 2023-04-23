@@ -3,6 +3,9 @@ ul {
   background-color: var(--primary-color);
   justify-content: space-around;
 }
-/* div {
+
+div {
   position: fixed;
-} */
+  top: 0;
+  width: 100%;
+}
