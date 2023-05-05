@@ -1,14 +1,21 @@
-.nav_bar{
+.nav_bar {
   z-index: 999;
 }
+
 ul {
   display: flex;
   background-color: var(--primary-color);
   justify-content: space-around;
+  list-style-type: none;
 }
 
 div {
   position: fixed;
   top: 0;
   width: 100%;
+}
+
+a {
+  text-decoration: none;
+  color: white;
 }
