@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-first-thing',
@@ -6,5 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./first-thing.component.css']
 })
 export class FirstThingComponent {
+  @ViewChild(".content") bg: any;
+
+  ChangeBackgroungImg(): void {
+  }
 
 }

@@ -9,6 +9,7 @@
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
+  animation: bgimg 20s infinite 1s ease-in-out;
 }
 
 /* .wraper img {
@@ -35,4 +36,8 @@
 
 a {
   text-decoration: none;
+}
+
+@keyframes bgimg {
+  
 }
