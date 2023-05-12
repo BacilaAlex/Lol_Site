@@ -13,6 +13,23 @@
             </mat-form-field>
         </form>
     </div>
-
 </div>
+
+
+<div class="container" fxLayout="row wrap" fxLayoutGap="16px grid">
+    <div fxFlex="%25" *ngFor="let num of [1,2,3]">
+        <mat-card class="my-card">
+            <mat-card-header>
+                <div mat-card-avatar class="example-header-image"></div>
+                <mat-card-title>Shiba Inu</mat-card-title>
+            </mat-card-header>
+            <mat-card-footer>
+                <link rel="stylesheet"
+                    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+                    <label class="fas fa-star"></label>
+            </mat-card-footer>
+        </mat-card>
+    </div>
+</div>
+
 <app-rate></app-rate>

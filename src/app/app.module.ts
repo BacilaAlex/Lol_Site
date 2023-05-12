@@ -12,6 +12,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatInputModule } from '@angular/material/input';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MatCardModule } from '@angular/material/card';
 
 @NgModule({
   declarations: [
@@ -20,14 +21,18 @@ import { ReactiveFormsModule } from '@angular/forms';
     NavBarComponent,
     FirstThingComponent,
     RateYourChampComponent,
-    
   ],
-  imports: [BrowserModule, AppRoutingModule, BrowserAnimationsModule,
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
     MatAutocompleteModule,
     MatInputModule,
-    ReactiveFormsModule,],
+    ReactiveFormsModule,
+    MatCardModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }
 

@@ -11,7 +11,7 @@ import {map, startWith} from 'rxjs/operators';
 export class RateYourChampComponent {
   myControl = new FormControl('');
   options: string[] = ['One', 'Two', 'Three'];
-  filteredOptions: Observable<string[]> | undefined;
+  filteredOptions!: Observable<string[]>;
 
   ngOnInit() {
     this.filteredOptions = this.myControl.valueChanges.pipe(
