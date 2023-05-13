@@ -13,6 +13,8 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatInputModule } from '@angular/material/input';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatCardModule } from '@angular/material/card';
+import { ChampionSearchComponent } from './champion-search/champion-search.component';
+import { SearchBarComponent } from './search-bar/search-bar.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +23,8 @@ import { MatCardModule } from '@angular/material/card';
     NavBarComponent,
     FirstThingComponent,
     RateYourChampComponent,
+    ChampionSearchComponent,
+    SearchBarComponent,
   ],
   imports: [
     BrowserModule,
