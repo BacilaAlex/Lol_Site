@@ -2,6 +2,13 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 
+//Firestore
+import { environment } from '../environments/environment';
+// import { AngularFireModule } from '@angular/fire/';
+// import { AngularFirestoreModule } from '@angular/fire/compat/firestore/';
+import { provideFirestore, getFirestore } from '@angular/fire/firestore';
+import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
+
 import { AppComponent } from './app.component';
 import { RateComponent } from './rate/rate.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
@@ -15,6 +22,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatCardModule } from '@angular/material/card';
 import { ChampionSearchComponent } from './champion-search/champion-search.component';
 import { SearchBarComponent } from './search-bar/search-bar.component';
+import { RateChampComponent } from './rate-champ/rate-champ.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +33,7 @@ import { SearchBarComponent } from './search-bar/search-bar.component';
     RateYourChampComponent,
     ChampionSearchComponent,
     SearchBarComponent,
+    RateChampComponent,
   ],
   imports: [
     BrowserModule,
@@ -34,6 +43,10 @@ import { SearchBarComponent } from './search-bar/search-bar.component';
     MatInputModule,
     ReactiveFormsModule,
     MatCardModule,
+    // AngularFireModule.initializeApp(environment.firebase),
+    // AngularFirestoreModule,
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideFirestore(() => getFirestore()),
   ],
   providers: [],
   bootstrap: [AppComponent],

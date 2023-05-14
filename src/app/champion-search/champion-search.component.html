@@ -1,10 +1,10 @@
 <div class="container" fxLayout="row wrap" fxLayoutGap="16px grid">
     <div fxFlex="%25" *ngFor="let champion of championData">
-        <a href="">
+        <a routerLink="/RateChampion/Champion/{{champion.name}}">
             <mat-card class="my-card">
                 <mat-card-header>
                     <div mat-card-avatar class="example-header-image"></div>
-                    <mat-card-title>{{champion.name}}</mat-card-title>
+                    <mat-card-title>{{champion.id}}</mat-card-title>
                 </mat-card-header>
                 <mat-card-footer>
                     <label class="fas fa-star"></label>
