@@ -23,6 +23,7 @@ import { MatCardModule } from '@angular/material/card';
 import { ChampionSearchComponent } from './champion-search/champion-search.component';
 import { SearchBarComponent } from './search-bar/search-bar.component';
 import { RateChampComponent } from './rate-champ/rate-champ.component';
+import { provideStorage,getStorage } from '@angular/fire/storage';
 
 @NgModule({
   declarations: [
@@ -47,6 +48,7 @@ import { RateChampComponent } from './rate-champ/rate-champ.component';
     // AngularFirestoreModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideFirestore(() => getFirestore()),
+    provideStorage(() => getStorage()),
   ],
   providers: [],
   bootstrap: [AppComponent],
