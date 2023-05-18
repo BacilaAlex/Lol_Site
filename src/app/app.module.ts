@@ -24,6 +24,7 @@ import { ChampionSearchComponent } from './champion-search/champion-search.compo
 import { SearchBarComponent } from './search-bar/search-bar.component';
 import { RateChampComponent } from './rate-champ/rate-champ.component';
 import { provideStorage,getStorage } from '@angular/fire/storage';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
   declarations: [
@@ -44,8 +45,7 @@ import { provideStorage,getStorage } from '@angular/fire/storage';
     MatInputModule,
     ReactiveFormsModule,
     MatCardModule,
-    // AngularFireModule.initializeApp(environment.firebase),
-    // AngularFirestoreModule,
+    FlexLayoutModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideFirestore(() => getFirestore()),
     provideStorage(() => getStorage()),

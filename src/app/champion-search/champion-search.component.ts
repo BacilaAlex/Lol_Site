@@ -38,7 +38,7 @@ export class ChampionSearchComponent {
       this.championData = data;
       console.log(this.championData);
     });
-    
+    this.getFileSquare('AatroxSquare.png').then((url)=>{ this.imgRef=url;});
   }
 
   async getData(): Promise<DocumentData[]> {
@@ -61,25 +61,40 @@ export class ChampionSearchComponent {
   //   console.log(collectionData(championRef, { idField: 'id', }) as Observable<IChampionData[]>);
   //   return collectionData(championRef, { idField: 'id', }) as Observable<IChampionData[]>;
   // }
-  imgRef: string = this.getFileSquare('AatroxSquare.png');
+  imgRef: string='';
+  
+  // getFileSquare(championName: string): string {
+  //   let img: string = '';
+  //   let storage = getStorage();
+  //   let championPath = ref(storage, 'Champion_LOL_Square/' + championName)
+  //   this.ngOnInit()
+  //   console.log(this.championData);
 
-  getFileSquare(championName: string): string {
-    let img: string = '';
-    let storage = getStorage();
-    let championPath = ref(storage, 'Champion_LOL_Square/' + championName)
-    this.ngOnInit()
-    console.log(this.championData);
-
-    getDownloadURL(championPath)
-      .then((url) => {
-        console.log(url);
-        img = url;
-      }
-      )
-      .catch((err) => {
-        console.log("Avem o err ${{err}}" + err);
-        return null;
-      })
-    return img;
+  //   getDownloadURL(championPath)
+  //     .then((url) => {
+  //       console.log(url);
+  //       img = url;
+  //     }
+  //     )
+  //     .catch((err) => {
+  //       console.log("Avem o err ${{err}}" + err);
+  //       return null;
+  //     })
+  //   return img;
+  // }
+  getFileSquare(championName: string): Promise<string> {
+    return new Promise<string>((resolve, reject) => {
+      let storage = getStorage();
+      let championPath = ref(storage, 'Champion_LOL_Square/' + championName);
+  
+      getDownloadURL(championPath)
+        .then((url) => {
+          resolve(url);
+        })
+        .catch((err) => {
+          console.log("An error occurred: " + err);
+          reject(err);
+        });
+    });
   }
 }

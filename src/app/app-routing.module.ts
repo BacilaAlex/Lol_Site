@@ -14,6 +14,13 @@ const routes: Routes = [
       { path: 'Champion/:name', component: RateChampComponent }
     ]
   },
+  {
+    path: 'RateChampion/:name', component: RateChampComponent,
+  },
+  {
+    path: 'a', component: RateChampComponent,
+  },
+
 ];
 
 @NgModule({

@@ -9,11 +9,16 @@ import { ChampionSearchComponent } from '../champion-search/champion-search.comp
 })
 export class RateChampComponent {
 
-  // constructor(private activatedRoute: ActivatedRoute) { }
+  constructor(private activatedRoute: ActivatedRoute) {
+    console.log("ceva");
+    
+   }
 
-  // championName: any;
+  championName: any;
 
-  // ngOnInit() {
-  //   this.championName = this.activatedRoute.snapshot.paramMap.get('name');
-  // }
+  ngOnInit() {
+    this.championName = this.activatedRoute.snapshot.paramMap.get('name');
+    console.log(this.championName);
+    
+  }
 }

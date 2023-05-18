@@ -1,16 +1,18 @@
-<div class="container" fxLayout="row wrap" fxLayoutGap="16px grid">
-    <div fxFlex="%25" *ngFor="let champion of championData">
-        <a routerLink="/RateChampion/Champion/{{champion['name']}}">
-            <mat-card class="my-card">
-                <mat-card-header>
-                    <!-- <div mat-card-avatar class="example-header-image"></div> -->
-                    <img [src]="imgRef" alt="N">
-                    <mat-card-title>{{champion['name']}}</mat-card-title>
-                </mat-card-header>
-                <mat-card-footer>
-                    <label class="fas fa-star"></label>
-                </mat-card-footer>
-            </mat-card>
-        </a>
+<div class="container">
+    <div fxLayout="row wrap" fxLayoutGap="16px grid">
+        <div fxFlex="%25" fxFlex.xs="100%" fxFlex.sm="33%" *ngFor="let champion of championData">
+            <a routerLink="/RateChampion/{{champion['name']}}">
+                <mat-card class="my-card">
+                    <mat-card-header>
+                        <!-- <div mat-card-avatar class="example-header-image"></div> -->
+                        <img mat-card-image [src]="imgRef" alt="N">
+                        <mat-card-title>{{champion['name']}}</mat-card-title>
+                    </mat-card-header>
+                    <mat-card-footer>
+                        <label class="fas fa-star"></label>
+                    </mat-card-footer>
+                </mat-card>
+            </a>
+        </div>
     </div>
 </div>
