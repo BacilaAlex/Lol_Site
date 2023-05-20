@@ -8,8 +8,9 @@ import { environment } from 'src/environments/environment';
 
 
 interface IChampionData {
-  //id: string;
+  id: string;
   name: string;
+  rate: number;
 }
 interface IimgRef {
   [key: string]: string
@@ -32,28 +33,25 @@ export class ChampionSearchComponent {
   championData: DocumentData[];
   imgRef: IimgRef;
   imgJust: string;
-
+  champion: IChampionData[];
   constructor(private fs: Firestore) {
     this.championData = [];
     this.imgRef = {};
     this.imgJust = '';
+    this.champion = [];
   }
 
-  //championData: IChampionData[] = [];
 
   ngOnInit() {
-    // this.getChampions().subscribe((data: IChampionData[]) => {
-    //   this.championData = data;
-    //   console.log(this.championData);
-    // });
+
     this.getData().then((data: DocumentData[]) => {
       this.championData = data;
-      console.log(this.championData);
+      //console.log(this.championData);
     });
     //console.log(this.imgRef);
-    this.getFileSquare("JhinSquare.png").then((data: string) => {
-      this.imgJust = data;
-    })
+    // this.getFileSquare("JhinSquare.png").then((data: string) => {
+    //   this.imgJust = data;
+    // })
 
   }
 
@@ -67,6 +65,11 @@ export class ChampionSearchComponent {
       // doc.data() is never undefined for query doc snapshots
       //console.log(doc.id, " => ", doc.data());
       this.getImg(doc.data());
+
+
+      //console.log({ 'id': doc.id, 'name': doc.data()['name'], 'rate': doc.data()['rate'] });
+      this.champion.push({ 'id': doc.id, 'name': doc.data()['name'], 'rate': doc.data()['rate'] });
+
       championArray.push(doc.data());
     });
     //console.log(championArray);
@@ -74,7 +77,7 @@ export class ChampionSearchComponent {
   }
 
   getImg(data: DocumentData) {
-    this.getFileSquare(data['name'] + "Square.png").then((url) => {
+    this.getFileSquare(data['name'] + ".jpg").then((url) => {
       // let el: { [key: string]: string } = {};
       // el[data['name']] = url;
       // console.log(el);
@@ -111,7 +114,7 @@ export class ChampionSearchComponent {
   getFileSquare(championName: string): Promise<string> {
     return new Promise<string>((resolve, reject) => {
       let storage = getStorage();
-      let championPath = ref(storage, 'Champion_LOL_Square/' + championName);
+      let championPath = ref(storage, 'Champion_LOL/' + championName);
 
       getDownloadURL(championPath)
         .then((url) => {
@@ -123,20 +126,18 @@ export class ChampionSearchComponent {
         });
     });
   }
-  logImg() {
-    //console.log(this.imgRef);
-    this.championData.forEach((champion) => console.log(champion))
-  }
+  // logImg() {
+  //   //console.log(this.imgRef);
+  //   this.championData.forEach((champion) => console.log(champion))
+  // }
   // observer = new Observable((observer) => {
   //   observer.next(this.championData);
   // })
 
 
   searchText: string = '';
-  onSearchTextEntered(searchValue: Event) {
-    console.log(searchValue);
-    this.searchText = (searchValue.target as HTMLInputElement).value;
-    console.log(this.searchText);
+  onSearchTextEntered(searchValue: string) {
+    this.searchText = searchValue
   }
 
 }

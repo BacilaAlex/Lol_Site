@@ -65,7 +65,7 @@ input#rate-5:checked~label {
 }
 
 #rate-1:checked~form header:before {
-    content: "I just hate it ";
+    content: "Trash like You";
 }
 
 #rate-2:checked~form header:before {

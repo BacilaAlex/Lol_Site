@@ -15,7 +15,7 @@ const routes: Routes = [
     ]
   },
   {
-    path: 'RateChampion/:name', component: RateChampComponent,
+    path: 'RateChampion/:name/:id', component: RateChampComponent,
   },
   {
     path: 'a', component: RateChampComponent,

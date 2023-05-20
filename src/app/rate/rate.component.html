@@ -6,15 +6,15 @@
         <div class="edit">EDIT</div>
     </div>
     <div class="star-widget">
-        <input type="radio" name="rate" id="rate-5">
+        <input type="radio" name="rate" id="rate-5" (click)="click5()">
         <label for="rate-5" class="fas fa-star"></label>
-        <input type="radio" name="rate" id="rate-4">
+        <input type="radio" name="rate" id="rate-4" (click)="click4()">
         <label for="rate-4" class="fas fa-star"></label>
-        <input type="radio" name="rate" id="rate-3">
+        <input type="radio" name="rate" id="rate-3" (click)="click3()">
         <label for="rate-3" class="fas fa-star"></label>
-        <input type="radio" name="rate" id="rate-2">
+        <input type="radio" name="rate" id="rate-2" (click)="click2()">
         <label for="rate-2" class="fas fa-star"></label>
-        <input type="radio" name="rate" id="rate-1">
+        <input type="radio" name="rate" id="rate-1" (click)="click1()">
         <label for="rate-1" class="fas fa-star"></label>
         <form action="#">
             <header></header>
@@ -22,7 +22,7 @@
                 <textarea cols="30" placeholder="Describe your experience.."></textarea>
             </div> -->
             <div class="btn">
-                <button type="submit">Post</button>
+                <button type="submit" (click)="updateData()" routerLink="/Home">Rate the Champion</button>
             </div>
         </form>
     </div>
