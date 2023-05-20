@@ -1,11 +1,12 @@
+<app-search-bar (onSearchTextChanged)="onSearchTextEntered($event)"></app-search-bar>
 <div class="container">
     <div fxLayout="row wrap" fxLayoutGap="16px grid">
         <div fxFlex="%25" fxFlex.xs="100%" fxFlex.sm="33%" *ngFor="let champion of championData">
-            <a routerLink="/RateChampion/{{champion['name']}}">
+            <a routerLink="/RateChampion/{{champion['name']}}" (click)="logImg()">
                 <mat-card class="my-card">
                     <mat-card-header>
                         <!-- <div mat-card-avatar class="example-header-image"></div> -->
-                        <img mat-card-image [src]="imgRef" alt="N">
+                        <img mat-card mat-card-image [src]="imgRef[champion['name']]" alt="Nasfd">
                         <mat-card-title>{{champion['name']}}</mat-card-title>
                     </mat-card-header>
                     <mat-card-footer>

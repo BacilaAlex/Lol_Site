@@ -6,9 +6,13 @@ import { DocumentData, getFirestore } from 'firebase/firestore';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
+
 interface IChampionData {
   //id: string;
   name: string;
+}
+interface IimgRef {
+  [key: string]: string
 }
 interface IFileUpload {
   key: string;
@@ -25,10 +29,18 @@ interface IFileUpload {
 })
 
 export class ChampionSearchComponent {
-  constructor(private fs: Firestore) { }
+  championData: DocumentData[];
+  imgRef: IimgRef;
+  imgJust: string;
+
+  constructor(private fs: Firestore) {
+    this.championData = [];
+    this.imgRef = {};
+    this.imgJust = '';
+  }
 
   //championData: IChampionData[] = [];
-  championData: DocumentData[] = [];
+
   ngOnInit() {
     // this.getChampions().subscribe((data: IChampionData[]) => {
     //   this.championData = data;
@@ -38,7 +50,11 @@ export class ChampionSearchComponent {
       this.championData = data;
       console.log(this.championData);
     });
-    this.getFileSquare('AatroxSquare.png').then((url)=>{ this.imgRef=url;});
+    //console.log(this.imgRef);
+    this.getFileSquare("JhinSquare.png").then((data: string) => {
+      this.imgJust = data;
+    })
+
   }
 
   async getData(): Promise<DocumentData[]> {
@@ -49,20 +65,30 @@ export class ChampionSearchComponent {
 
     querySnapshot.forEach((doc) => {
       // doc.data() is never undefined for query doc snapshots
-      //console.log(doc.id, " => ", doc.data() as IChampionData);
+      //console.log(doc.id, " => ", doc.data());
+      this.getImg(doc.data());
       championArray.push(doc.data());
     });
     //console.log(championArray);
     return championArray;
   }
 
+  getImg(data: DocumentData) {
+    this.getFileSquare(data['name'] + "Square.png").then((url) => {
+      // let el: { [key: string]: string } = {};
+      // el[data['name']] = url;
+      // console.log(el);
+
+      this.imgRef[data['name']] = url;
+    });
+  }
   // getChampions(): Observable<IChampionData[]> {
   //   let championRef = collection(this.fs, "Champions")
   //   console.log(collectionData(championRef, { idField: 'id', }) as Observable<IChampionData[]>);
   //   return collectionData(championRef, { idField: 'id', }) as Observable<IChampionData[]>;
   // }
-  imgRef: string='';
-  
+
+
   // getFileSquare(championName: string): string {
   //   let img: string = '';
   //   let storage = getStorage();
@@ -86,7 +112,7 @@ export class ChampionSearchComponent {
     return new Promise<string>((resolve, reject) => {
       let storage = getStorage();
       let championPath = ref(storage, 'Champion_LOL_Square/' + championName);
-  
+
       getDownloadURL(championPath)
         .then((url) => {
           resolve(url);
@@ -97,4 +123,20 @@ export class ChampionSearchComponent {
         });
     });
   }
+  logImg() {
+    //console.log(this.imgRef);
+    this.championData.forEach((champion) => console.log(champion))
+  }
+  // observer = new Observable((observer) => {
+  //   observer.next(this.championData);
+  // })
+
+
+  searchText: string = '';
+  onSearchTextEntered(searchValue: Event) {
+    console.log(searchValue);
+    this.searchText = (searchValue.target as HTMLInputElement).value;
+    console.log(this.searchText);
+  }
+
 }

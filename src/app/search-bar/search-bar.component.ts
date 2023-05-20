@@ -1,6 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { DocumentData } from 'firebase/firestore';
 import { Observable } from 'rxjs';
+
 import { map, startWith } from 'rxjs/operators';
 
 @Component({
@@ -9,20 +11,15 @@ import { map, startWith } from 'rxjs/operators';
   styleUrls: ['./search-bar.component.css']
 })
 export class SearchBarComponent {
-  myControl = new FormControl('');
-  options: string[] = ['One', 'Two', 'Three'];
-  filteredOptions!: Observable<string[]>;
 
+  constructor() { }
   ngOnInit() {
-    this.filteredOptions = this.myControl.valueChanges.pipe(
-      startWith(''),
-      map(value => this._filter(value || '')),
-    );
+  }
+  searchValue: string = '';
+  @Output()
+  searchTextChanged: EventEmitter<string> = new EventEmitter<string>();
+  onSearchTextChanged() {
+    this.searchTextChanged.emit(this.searchValue);
   }
 
-  private _filter(value: string): string[] {
-    const filterValue = value.toLowerCase();
-
-    return this.options.filter(option => option.toLowerCase().includes(filterValue));
-  }
 }
