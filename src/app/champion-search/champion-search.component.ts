@@ -69,11 +69,11 @@ export class ChampionSearchComponent {
 
       //console.log({ 'id': doc.id, 'name': doc.data()['name'], 'rate': doc.data()['rate'] });
       this.champion.push({ 'id': doc.id, 'name': doc.data()['name'], 'rate': doc.data()['rate'] });
-
+      this.champion.sort((a, b) => a['name'].localeCompare(b['name']));
       championArray.push(doc.data());
     });
-    //console.log(championArray);
-    return championArray;
+    console.log(championArray.sort((a, b) => a['name'].localeCompare(b['name'])));
+    return championArray.sort((a, b) => a['name'].localeCompare(b['name']));
   }
 
   getImg(data: DocumentData) {

@@ -69,11 +69,11 @@ input#rate-5:checked~label {
 }
 
 #rate-2:checked~form header:before {
-    content: "I don't like it ";
+    content: "Like cutting onions";
 }
 
 #rate-3:checked~form header:before {
-    content: "It is awesome ";
+    content: "The only balanced thing";
 }
 
 #rate-4:checked~form header:before {
