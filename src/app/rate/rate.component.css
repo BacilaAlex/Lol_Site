@@ -77,11 +77,11 @@ input#rate-5:checked~label {
 }
 
 #rate-4:checked~form header:before {
-    content: "I just like it ";
+    content: "Just for you";
 }
 
 #rate-5:checked~form header:before {
-    content: "I just love it ";
+    content: "Stupid main";
 }
 
 .container form {

@@ -1,2 +1,15 @@
-<!-- <img [src]="championName['name']]" > -->
-<app-rate></app-rate>
+<div class="centered">
+    <div class="image-container">
+        <div class="image-wrapper">
+            <img class="blurry-image" [src]="championImgUrl">
+        </div>
+        <div class="image-overlay">
+            <h3 class="nickname">{{championData?.['nickname']}}</h3>
+            <h1 class="champion-name">{{championName}}</h1>
+            <div class="description-container">
+                <div class="description">{{championData?.['description']}}</div>
+            </div>
+            <app-rate></app-rate>
+        </div>
+    </div>
+</div>

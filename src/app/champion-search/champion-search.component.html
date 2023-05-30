@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
 <app-search-bar (searchTextChanged)="onSearchTextEntered($event)"></app-search-bar>
 <div class="container">
     <div fxLayout="row wrap" fxLayoutGap="16px grid">
@@ -17,6 +18,7 @@
                         <img [src]="imgRef[champion['name']]" alt="Nimic" />
                         <figcaption>
                             <h3>{{champion['name']}}</h3>
+                            <h4>Rate {{champion['rate']}}</h4>
                         </figcaption>
                     </figure>
                 </a>

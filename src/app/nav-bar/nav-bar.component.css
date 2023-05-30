@@ -1,43 +1,22 @@
-/* .nav_bar {
-
+.nav_bar {
   z-index: 999;
-}
-
-ul {
-  display: flex;
-  padding: 0.5rem;
-  background-color: var(--primary-color);
-  justify-content: space-around;
-  list-style-type: none;
-  text-align: center;
-}
-
-ul li {
-  padding: 0.25rem;
-}
-
-div {
+  background: linear-gradient(to bottom, black, transparent);
+  /* Change var(--primary-color, transparent) to transparent */
   position: fixed;
   top: 0;
   width: 100%;
-}
-
-a {
-  text-decoration: none;
-  color: white;
-} */
-.nav_bar {
-  z-index: 999;
+  /* backdrop-filter: blur(10px); */
+  /* Add backdrop-filter property for a blurred effect */
 }
 
 ul {
   display: flex;
   padding: 0.5rem;
-  background-color: var(--primary-color);
   justify-content: space-around;
   list-style-type: none;
   text-align: center;
   margin: 0;
+  background-color: transparent;
 }
 
 ul li {
